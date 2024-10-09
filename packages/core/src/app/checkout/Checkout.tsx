@@ -301,12 +301,17 @@ class Checkout extends Component<
         }
 
         return (
-            <div className={classNames('remove-checkout-step-numbers', { 'is-embedded': isEmbedded() })} data-test="checkout-page-container" id="checkout-page-container">
-                <div className="layout optimizedCheckout-contentPrimary">
-                    {this.renderContent()}
-                </div>
-                {errorModal}
+          <div
+            className={classNames('remove-checkout-step-numbers', { 'is-embedded': isEmbedded() })}
+            data-test="checkout-page-container"
+            id="checkout-page-container"
+          >
+            <div className="layout optimizedCheckout-contentPrimary">
+              <div>Open Checkout Quick Start Example</div>
+              {this.renderContent()}
             </div>
+            {errorModal}
+          </div>
         );
     }
 
@@ -386,39 +391,36 @@ class Checkout extends Component<
         } = this.state;
 
         return (
-            <CheckoutStep
-                {...step}
-                heading={<TranslatedString id="customer.customer_heading" />}
-                key={step.type}
-                onEdit={this.handleEditStep}
-                onExpanded={this.handleExpanded}
-                suggestion={<CheckoutSuggestion />}
-                summary={
-                    <CustomerInfo
-                        onSignOut={this.handleSignOut}
-                        onSignOutError={this.handleError}
-                    />
-                }
-            >
-                <Customer
-                    checkEmbeddedSupport={this.checkEmbeddedSupport}
-                    isEmbedded={isEmbedded()}
-                    isSubscribed={isSubscribed}
-                    isWalletButtonsOnTop = {isShowingWalletButtonsOnTop }
-                    onAccountCreated={this.navigateToNextIncompleteStep}
-                    onChangeViewType={this.setCustomerViewType}
-                    onContinueAsGuest={this.navigateToNextIncompleteStep}
-                    onContinueAsGuestError={this.handleError}
-                    onReady={this.handleReady}
-                    onSignIn={this.navigateToNextIncompleteStep}
-                    onSignInError={this.handleError}
-                    onSubscribeToNewsletter={this.handleNewsletterSubscription}
-                    onUnhandledError={this.handleUnhandledError}
-                    onWalletButtonClick={this.handleWalletButtonClick}
-                    step={step}
-                    viewType={customerViewType}
-                />
-            </CheckoutStep>
+          <CheckoutStep
+            {...step}
+            heading={<TranslatedString id="customer.customer_heading" />}
+            key={step.type}
+            onEdit={this.handleEditStep}
+            onExpanded={this.handleExpanded}
+            suggestion={<CheckoutSuggestion />}
+            summary={
+              <CustomerInfo onSignOut={this.handleSignOut} onSignOutError={this.handleError} />
+            }
+          >
+            <Customer
+              checkEmbeddedSupport={this.checkEmbeddedSupport}
+              isEmbedded={isEmbedded()}
+              isSubscribed={isSubscribed}
+              isWalletButtonsOnTop={isShowingWalletButtonsOnTop}
+              onAccountCreated={this.navigateToNextIncompleteStep}
+              onChangeViewType={this.setCustomerViewType}
+              onContinueAsGuest={this.navigateToNextIncompleteStep}
+              onContinueAsGuestError={this.handleError}
+              onReady={this.handleReady}
+              onSignIn={this.navigateToNextIncompleteStep}
+              onSignInError={this.handleError}
+              onSubscribeToNewsletter={this.handleNewsletterSubscription}
+              onUnhandledError={this.handleUnhandledError}
+              onWalletButtonClick={this.handleWalletButtonClick}
+              step={step}
+              viewType={customerViewType}
+            />
+          </CheckoutStep>
         );
     }
 
